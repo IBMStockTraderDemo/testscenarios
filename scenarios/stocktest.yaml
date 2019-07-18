@@ -8,7 +8,7 @@ metadata:
 spec:
   environment: 
     name: development
-    from: https://github.ibm.com/kacz/utilities
+    from: https://github.com/IBMStockTraderDemo/testscenarios
     version: HEAD
     file: environments/development.yaml
   
