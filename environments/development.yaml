@@ -1,0 +1,31 @@
+#
+# Dev-1 Test Environment
+#  
+apiVersion: env.test/v1beta1
+kind: Environment
+metadata:
+  name: development
+endpoints:
+   - description: "Portfolio application API"
+     name: portfolio 
+     address: 10.0.23.4
+     port: 2301
+     type: http
+  
+   - description: "Stock trader application API"
+     name: trader
+     address: 10.0.23.12
+     port: 9080
+     type: http
+  
+   - description: "Stock quote virtual service" 
+     name: stock-quote-stub
+     address: <<stock-quote-address>>
+     port: <<stock-quote-port>>
+     type: https
+
+   - description: "Stock quote live service"
+     name: stock-quote
+     address: stockquote.dev1.net
+     port: 9080
+     type: https

@@ -1,0 +1,20 @@
+apiVersion: scenario.test/v1beta1
+kind: Scenario
+metadata:
+  name: stocktest
+spec:
+  environment: 
+    name: dev1
+    from: https://environments.github.com/stock-test-env
+    version: f99c32ab4a3b27aeab8cf37d75c42c29567a0636
+    file: dev1.yaml
+  virtualservices:
+    - name: "stock-quote-stub"
+      from: https://github.com/IBMStockTraderDemo/stockquotestub
+      version: 707171691f7698fae06cb23ad5e7399ba4b56bc6
+      live-service: stock-quote
+    - name: "tess"
+      from: https://github.com/IBMStockTraderDemo/stockquotestub
+      live-service: test
+
+

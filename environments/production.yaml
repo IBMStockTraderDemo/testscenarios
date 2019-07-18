@@ -1,0 +1,17 @@
+apiVersion: env.test/v1beta1
+kind: Environment
+metadata:
+  name: production
+endpoints:
+   - name: portfolio 
+     address: portfolio.dev2.net
+     port: 2301
+     type: http
+   - name: trader
+     address: trader.dev2.net
+     port: 9080
+     type: http
+   - name: stock-quote
+     address: <<stock-quote-address>>
+     port: <<stock-quote-port>>
+     type: https 

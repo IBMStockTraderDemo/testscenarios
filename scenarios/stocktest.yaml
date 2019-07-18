@@ -1,0 +1,29 @@
+#
+# Scenario: Run the latest version of stock testing in Dev-1
+#
+apiVersion: scenario.test/v1beta1
+kind: Scenario
+metadata:
+  name: stocktest
+spec:
+  environment: 
+    name: development
+    from: https://github.ibm.com/kacz/utilities
+    version: HEAD
+    file: environments/development.yaml
+  
+  virtualservices:
+    - name: stock-quote-stub
+      from: https://github.com/IBMStockTraderDemo/stockquotestub
+      live-service: stock-quote
+  
+  tests:
+    - name: portfoliotest
+      from: https://github.com/IBMStockTraderDemo/portfoliotest
+      targets:
+      - name: trader
+      - name: portfolio
+
+      
+
+
