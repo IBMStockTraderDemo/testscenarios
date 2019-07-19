@@ -16,6 +16,9 @@ spec:
     - name: stock-quote-stub
       from: https://github.com/IBMStockTraderDemo/stockquotestub
       live-service: stock-quote
+    - name: stock-quote-copy
+      from: https://github.com/IBMStockTraderDemo/stockquotestub
+      live-service: stock-quote
   
   tests:
     - name: portfoliotest
