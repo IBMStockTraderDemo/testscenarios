@@ -15,11 +15,11 @@ spec:
   virtualservices:
     - name: stock-quote-stub
       from: https://github.com/IBMStockTraderDemo/stockquotestub
-      version: 7e2e3a03d44fdd8a90d13dfb983c2debf469f44f
+    #  version: 7e2e3a03d44fdd8a90d13dfb983c2debf469f44f
       live-service: stock-quote-service
-    - name: stock-quote-copy
-      from: https://github.com/IBMStockTraderDemo/stockquotestub
-      live-service: stock-quote-service-copy
+    #- name: stock-quote-copy
+    #  from: https://github.com/IBMStockTraderDemo/stockquotestub
+    #  live-service: stock-quote-service-copy
   
   tests:
     - name: portfoliotest
