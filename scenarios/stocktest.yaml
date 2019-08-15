@@ -6,27 +6,33 @@ kind: Scenario
 metadata:
   name: stocktest
 spec:
-  environment: 
-    name: development
-    from: https://github.com/IBMStockTraderDemo/testscenarios
-    version: HEAD
-    file: environments/development.yaml
+  #environment: 
+  #  name: development
+  #  from: https://github.com/IBMStockTraderDemo/testscenarios
+  #  version: HEAD
+  #  file: environments/development.yaml
   
   virtualservices:
-    - name: stock-quote-stub
+    - name: virtual-stock-quote
+      description: A mock of the stoc-quote service in the Stock Trader application (using Rational Integration Tester)
+      type: RTVS
       from: https://github.com/IBMStockTraderDemo/stockquotestub
-    #  version: 7e2e3a03d44fdd8a90d13dfb983c2debf469f44f
-      live-service: stock-quote-service
+      #version: 7e2e3a03d44fdd8a90d13dfb983c2debf469f44f
+      servicename: virtual-stock-quote-service
+      containerports:
+      - type: http
+        port: 31002
     #- name: stock-quote-copy
     #  from: https://github.com/IBMStockTraderDemo/stockquotestub
     #  live-service: stock-quote-service-copy
   
   tests:
     - name: portfoliotest
+      type: RIT
       from: https://github.com/IBMStockTraderDemo/portfoliotest
       targets:
-      - name: trader
-      - name: portfolio
+      - name: http://portfolio-service:9080
+      - name: https://portfolio-service:9443
 
       
 
