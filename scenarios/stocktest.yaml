@@ -6,11 +6,11 @@ kind: Scenario
 metadata:
   name: stocktest
 spec:
-  #environment: 
-  #  name: development
-  #  from: https://github.com/IBMStockTraderDemo/testscenarios
-  #  version: HEAD
-  #  file: environments/development.yaml
+  environment: 
+    name: development
+    from: https://github.com/IBMStockTraderDemo/testscenarios
+    version: HEAD
+    file: environments/development.yaml
   
   virtualservices:
     - name: virtual-stock-quote
@@ -32,7 +32,7 @@ spec:
       from: https://github.com/IBMStockTraderDemo/portfoliotest
       targets:
       - name: http://portfolio-service:9080
-      - name: https://portfolio-service:9443
+      - name: http://trader-service:9080
 
       
 
