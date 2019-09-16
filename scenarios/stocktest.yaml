@@ -15,17 +15,17 @@ spec:
   virtualservices:
     - name: virtual-stock-quote
       description: A mock of the stock-quote service in the Stock Trader application (using Rational Integration Tester)
-      type: RTVS
+      type: rtvs
       from: https://github.com/IBMStockTraderDemo/stockquotestub
       #version: 7e2e3a03d44fdd8a90d13dfb983c2debf469f44f
       servicename: virtual-stock-quote-service
       containerports:
-      - type: http
+      - type: code
         port: 31002
     - name: virtual-loyalty-level
       description: A mock of the loyalty-level service in the Stock Trader application (using Rational Integration Tester)
       type: CODE
-      from: https://github.com/IBMStockTraderDemo/stockquotestub
+      from: https://github.ibm.com/kacz/loyaltystub
       #version: 7e2e3a03d44fdd8a90d13dfb983c2debf469f44f
       servicename: loyalty-level-service
       containerports:
@@ -34,7 +34,7 @@ spec:
   
   tests:
     - name: portfoliotest
-      type: RIT
+      type: rit
       from: https://github.com/IBMStockTraderDemo/portfoliotest
       targets:
       - name: http://portfolio-service:9080
