@@ -6,15 +6,15 @@ kind: Scenario
 metadata:
   name: stocktest
 spec:
-  environment: 
-    name: development
-    from: https://github.com/IBMStockTraderDemo/testscenarios
-    version: HEAD
-    file: environments/development.yaml
+  #environment: 
+  #  name: development
+  #  from: https://github.com/IBMStockTraderDemo/testscenarios
+  #  version: HEAD
+  #  file: environments/development.yaml
   
   virtualservices:
     - name: virtual-stock-quote
-      description: A mock of the stoc-quote service in the Stock Trader application (using Rational Integration Tester)
+      description: A mock of the stock-quote service in the Stock Trader application (using Rational Integration Tester)
       type: RTVS
       from: https://github.com/IBMStockTraderDemo/stockquotestub
       #version: 7e2e3a03d44fdd8a90d13dfb983c2debf469f44f
@@ -22,9 +22,15 @@ spec:
       containerports:
       - type: http
         port: 31002
-    #- name: stock-quote-copy
-    #  from: https://github.com/IBMStockTraderDemo/stockquotestub
-    #  live-service: stock-quote-service-copy
+    - name: virtual-loyalty-level
+      description: A mock of the loyalty-level service in the Stock Trader application (using Rational Integration Tester)
+      type: CODE
+      from: https://github.com/IBMStockTraderDemo/stockquotestub
+      #version: 7e2e3a03d44fdd8a90d13dfb983c2debf469f44f
+      servicename: loyalty-level-service
+      containerports:
+      - type: http
+        port: 9080
   
   tests:
     - name: portfoliotest
@@ -33,7 +39,6 @@ spec:
       targets:
       - name: http://portfolio-service:9080
       - name: http://trader-service:9080
+      - name: http://looper-service:9080
 
       
-
-
