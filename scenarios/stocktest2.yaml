@@ -1,11 +1,16 @@
 #
-# Scenario: Run the latest version of stock testing in Dev-1
+# Scenario: Run the latest version of stocktest with extension in services, etc
 #
 apiVersion: scenario.test/v1beta1
 kind: Scenario
 metadata:
   name: stocktest
 spec:
+  environment: 
+    name: development
+    from: https://github.com/IBMStockTraderDemo/testscenarios
+    version: HEAD
+    file: environments/development.yaml
   
   virtualservices:
     - name: virtual-stock-quote
@@ -17,6 +22,15 @@ spec:
       containerports:
       - type: http
         port: 31002
+    - name: virtual-loyalty-level
+      description: A mock of the loyalty-level service in the Stock Trader application (using Rational Integration Tester)
+      type: CODE
+      from: https://github.ibm.com/kacz/loyaltystub
+      #version: 7e2e3a03d44fdd8a90d13dfb983c2debf469f44f
+      servicename: loyalty-level-service
+      containerports:
+      - type: http
+        port: 9080
   
   tests:
   
@@ -28,8 +42,4 @@ spec:
       - name: http://trader-service:9080
       - name: http://looper-service:9080
 
-  confguration:
-    from: 
-    add:
-    remove:
-
+      
