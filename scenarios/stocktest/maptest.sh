@@ -83,4 +83,4 @@ then
   exit 1
 fi
 
-echo Service $SERVICENAME mapped to $TARGETSERVICE (copied)
+echo Service $SERVICENAME mapped to $TARGETSERVICE - copied
