@@ -27,7 +27,7 @@ spec:
       - name: http://trader-service:9080
       - name: http://looper-service:9080
 
-  confguration:
+  configuration:
     services:
       map:
       - from: https://github.com/IBMStockTraderDemo/testscenarios
