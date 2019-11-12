@@ -1,8 +1,8 @@
 #
 # Scenario: Run the latest version of stock testing in Dev-1
 #
-apiVersion: scenario.test/v1beta1
-kind: Scenario
+apiVersion: test.ibm.com/v1alpha1
+kind: Testscenario
 metadata:
   name: stocktest
 spec:
