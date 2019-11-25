@@ -16,5 +16,3 @@ spec:
     - name: "tess"
       from: https://github.com/IBMStockTraderDemo/stockquotestub
       live-service: test
-
-
