@@ -30,39 +30,23 @@ spec:
   configuration:
     services:
       map:
-      - from: https://github.com/IBMStockTraderDemo/testscenarios
-        using: scenarios/stocktest/activatestub.sh
-        source: virtual-stock-quote-service
+      - source: virtual-stock-quote-service
         target: st29-2-stock-quote-service
       unmap:
-      - from: https://github.com/IBMStockTraderDemo/testscenarios
-        using: scenarios/stocktest/deactivatestub.sh
-        source: virtual-stock-quote-service
+      - source: virtual-stock-quote-service
         target: st29-2-stock-quote-service
     tests:
       map:
-      - from: https://github.com/IBMStockTraderDemo/testscenarios
-        using: scenarios/stocktest/maptest.sh
-        source: portfolio-service
+      - source: portfolio-service
         target: st29-2-portfolio-service
-      - from: https://github.com/IBMStockTraderDemo/testscenarios
-        using: scenarios/stocktest/maptest.sh
-        source: trader-service
+      - source: trader-service
         target: st29-2-trader-service
-      - from: https://github.com/IBMStockTraderDemo/testscenarios
-        using: scenarios/stocktest/maptest.sh
-        source: looper-service
+      - source: looper-service
         target: st29-2-looper-service
       unmap:
-      - from: https://github.com/IBMStockTraderDemo/testscenarios
-        using: scenarios/stocktest/unmaptest.sh
-        source: portfolio-service
+      - source: portfolio-service
         target: st29-2-portfolio-service
-      - from: https://github.com/IBMStockTraderDemo/testscenarios
-        using: scenarios/stocktest/unmaptest.sh
-        source: trader-service
+      - source: trader-service
         target: st29-2-trader-service
-      - from: https://github.com/IBMStockTraderDemo/testscenarios
-        using: scenarios/stocktest/unmaptest.sh
-        source: looper-service
+      - source: looper-service
         target: st29-2-looper-service
