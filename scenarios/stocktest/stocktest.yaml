@@ -4,49 +4,51 @@
 apiVersion: test.ibm.com/v1alpha1
 kind: Testscenario
 metadata:
-  name: stocktest
+  name: stocktest-latest
 spec:
-  
-  virtualservices:
-    - name: virtual-stock-quote
-      description: A mock of the stock-quote service in the Stock Trader application (using Rational Integration Tester)
-      type: rtvs
-      from: https://github.com/IBMStockTraderDemo/stockquotestub
-      #version: 7e2e3a03d44fdd8a90d13dfb983c2debf469f44f
-      servicename: virtual-stock-quote-service
-      containerports:
-      - type: http
-        port: 31002
-  
-  tests:
-    - name: portfoliotest
-      type: rit
-      from: https://github.com/IBMStockTraderDemo/portfoliotest
-      targets:
-      - name: http://portfolio-service:9080
-      - name: http://trader-service:9080
-      - name: http://looper-service:9080
-      
-  configuration:
-    services:
-      map:
-      - source: virtual-stock-quote-service
-        target: st29-2-stock-quote-service
-      unmap:
-      - source: virtual-stock-quote-service
-        target: st29-2-stock-quote-service
+  state: present
+  scenario:
+    virtualservices:
+      - name: virtual-stock-quote
+        description: A mock of the stock-quote service in the Stock Trader application (using Rational Integration Tester)
+        type: rtvs
+        from: https://github.com/IBMStockTraderDemo/stockquotestub
+        #version: 7e2e3a03d44fdd8a90d13dfb983c2debf469f44f
+        servicename: virtual-stock-quote-service
+        containerports:
+        - type: http
+          port: 31002
+    
     tests:
-      map:
-      - source: portfolio-service
-        target: st29-2-portfolio-service
-      - source: trader-service
-        target: st29-2-trader-service
-      - source: looper-service
-        target: st29-2-looper-service
-      unmap:
-      - source: portfolio-service
-        target: st29-2-portfolio-service
-      - source: trader-service
-        target: st29-2-trader-service
-      - source: looper-service
-        target: st29-2-looper-service
+      - name: portfoliotest
+        type: rit
+        from: https://github.com/IBMStockTraderDemo/portfoliotest
+        targets:
+        - name: http://portfolio-service:9080
+        - name: http://trader-service:9080
+        - name: http://looper-service:9080
+        
+    configuration:
+      services:
+        map:
+        - source: virtual-stock-quote-service
+          target: st29-2-stock-quote-service
+        unmap:
+        - source: virtual-stock-quote-service
+          target: st29-2-stock-quote-service
+      tests:
+        map:
+        - source: portfolio-service
+          target: st29-2-portfolio-service
+        - source: trader-service
+          target: st29-2-trader-service
+        - source: looper-service
+          target: st29-2-looper-service
+        unmap:
+        - source: portfolio-service
+          target: st29-2-portfolio-service
+        - source: trader-service
+          target: st29-2-trader-service
+        - source: looper-service
+          target: st29-2-looper-service
+  
