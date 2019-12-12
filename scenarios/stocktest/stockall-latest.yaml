@@ -18,27 +18,31 @@ spec:
         containerports:
         - type: http
           port: 31002
+        scale: 1
     
     tests:
       - name: portfoliotest
         type: rit
         from: https://github.com/IBMStockTraderDemo/portfoliotest
+        scale: 1
         targets:
         - name: http://portfolio-service:9080
         - name: http://trader-service:9080
         - name: http://looper-service:9080
         
     configuration:
-      services:
-        map:
-        - source: st29-2-stock-quote-service
-          target: virtual-stock-quote-service
+      virtualservices:
+        - name: virtual-stock-quote
+          map:
+          - source: st29-2-stock-quote-service
+            target: virtual-stock-quote-service
       tests:
-        map:
-        - source: portfolio-service
-          target: st29-2-portfolio-service
-        - source: trader-service
-          target: st29-2-trader-service
-        - source: looper-service
-          target: st29-2-looper-service
+        - name: portfoliotest
+          map:
+          - source: portfolio-service
+            target: st29-2-portfolio-service
+          - source: trader-service
+            target: st29-2-trader-service
+          - source: looper-service
+            target: st29-2-looper-service
   
