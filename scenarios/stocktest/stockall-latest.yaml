@@ -34,15 +34,15 @@ spec:
       virtualservices:
         - name: virtual-stock-quote
           map:
-          - source: st29-2-stock-quote-service
+          - source: st-stock-quote-service
             target: virtual-stock-quote-service
       tests:
         - name: portfoliotest
           map:
           - source: portfolio-service
-            target: st29-2-portfolio-service
+            target: st-portfolio-service
           - source: trader-service
-            target: st29-2-trader-service
+            target: st-trader-service
           - source: looper-service
-            target: st29-2-looper-service
+            target: st-looper-service
   
